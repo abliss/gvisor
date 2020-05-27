@@ -104,15 +104,6 @@ git_repository(
 
 load("@rules_python//python:pip.bzl", "pip_import")
 
-pip_import(
-    name = "pydeps",
-    python_interpreter = "python3",
-    requirements = "//benchmarks:requirements.txt",
-)
-
-load("@pydeps//:requirements.bzl", "pip_install")
-
-pip_install()
 
 # Load bazel_toolchain to support Remote Build Execution.
 # See releases at https://releases.bazel.build/bazel-toolchains.html

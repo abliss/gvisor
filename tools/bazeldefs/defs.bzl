@@ -7,7 +7,6 @@ load("@io_bazel_rules_go//go:def.bzl", "GoLibrary", _go_binary = "go_binary", _g
 load("@io_bazel_rules_go//proto:def.bzl", _go_grpc_library = "go_grpc_library", _go_proto_library = "go_proto_library")
 load("@rules_cc//cc:defs.bzl", _cc_binary = "cc_binary", _cc_library = "cc_library", _cc_proto_library = "cc_proto_library", _cc_test = "cc_test")
 load("@rules_pkg//:pkg.bzl", _pkg_deb = "pkg_deb", _pkg_tar = "pkg_tar")
-load("@pydeps//:requirements.bzl", _py_requirement = "requirement")
 load("@com_github_grpc_grpc//bazel:cc_grpc_library.bzl", _cc_grpc_library = "cc_grpc_library")
 
 build_test = _build_test
@@ -160,8 +159,6 @@ def go_context(ctx):
         tags = go_ctx.tags,
     )
 
-def py_requirement(name, direct = True):
-    return _py_requirement(name)
 
 def select_arch(amd64 = "amd64", arm64 = "arm64", default = None, **kwargs):
     values = {
