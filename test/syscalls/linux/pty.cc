@@ -65,7 +65,7 @@ constexpr int kPtmxMinor = 2;
 // The timeout when polling for data from a pty. When data is written to one end
 // of a pty, Linux asynchronously makes it available to the other end, so we
 // have to wait.
-constexpr absl::Duration kTimeout = absl::Seconds(20);
+constexpr absl::Duration kTimeout = absl::Seconds(2);
 
 // The maximum line size in bytes returned per read from a pty file.
 constexpr int kMaxLineSize = 4096;
