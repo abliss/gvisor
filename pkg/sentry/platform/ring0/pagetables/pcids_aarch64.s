@@ -25,19 +25,6 @@
 //
 // func GetASIDBits() uint8
 TEXT ·GetASIDBits(SB),NOSPLIT,$0-1
-	// First, check whether 16bits ASID is supported.
-	// ID_AA64MMFR0_EL1.ASIDBITS[7:4] == 0010.
-	WORD $0xd5380700    // MRS ID_AA64MMFR0_EL1, R0
-	UBFX $ID_AA64MMFR0_ASIDBITS_SHIFT, R0, $4, R0
-	CMPW $ID_AA64MMFR0_ASIDBITS_16, R0
-	BNE bits_8
-
-	// Second, check whether 16bits ASID is enabled.
-	// TCR_EL1.AS[36] == 1.
-	WORD $0xd5382040    // MRS TCR_EL1, R0
-	TBZ  $TCR_EL1_AS_BIT, R0, bits_8
-	MOVD $16, R0
-	B done
 bits_8:
 	MOVD $8, R0
 done:
