@@ -49,7 +49,8 @@ func init() {
 	// Open the source file.
 	b, err := ioutil.ReadFile(systemMMapMinAddrSource)
 	if err != nil {
-		panic(fmt.Sprintf("couldn't open %s: %v", systemMMapMinAddrSource, err))
+		fmt.Printf("couldn't open %s: %v", systemMMapMinAddrSource, err)
+		b = []byte("0")
 	}
 
 	// Parse the result.
